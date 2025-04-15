@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forex Mastery Academy | Signals & Mentorship | Uganda</title>
+    <style>
+        :root {
+            --gold: #FFD700;
+            --dark: #1A1A2E;
+            --blue: #16213E;
+            --green: #2ECC71;
+            --purple: #9B59B6;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: white;
+            background-color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        /* Header with logo */
+        .header {
+            background: linear-gradient(135deg, var(--blue), #0F3460);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: "";
+            background-image: url('https://i.ibb.co/5sS6Q6k/candlestick-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+        }
+        
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            height: 60px;
+            width: auto;
+            z-index: 100;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Navigation Tabs */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            padding: 12px 25px;
+            background: rgba(255, 215, 0, 0.2);
+            color: var(--gold);
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 5px;
+        }
+        
+        .tab-btn.active {
+            background: var(--gold);
+            color: black;
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Pricing Cards */
+        .pricing-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .pricing-card {
+            background: rgba(26, 26, 46, 0.9);
+            border: 2px solid var(--gold);
+            border-radius: 15px;
+            padding: 30px;
+            width: 300px;
+            position: relative;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--green);
+            box-shadow: 0 15px 40px rgba(46, 204, 113, 0.2);
+        }
+        
+        .badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: var(--purple);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .badge.gold {
+            background: var(--gold);
+            color: black;
+        }
+        
+        .badge.green {
+            background: var(--green);
+        }
+        
+        .plan-name {
+            color: var(--gold);
+            font-size: 24px;
+            margin-top: 0;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 10px;
+        }
+        
+        .price {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 20px 0;
+            color: var(--green);
+        }
+        
+        .installment {
+            font-size: 16px;
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+        
+        .features {
+            margin: 25px 0;
+            padding-left: 20px;
+        }
+        
+        .features li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .features li::before {
+            content: "✓";
+            color: var(--green);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .highlight {
+            background: rgba(46, 204, 113, 0.2);
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--gold);
+            color: black;
+            padding: 15px 30px;
+            margin-top: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn:hover {
+            background: var(--green);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+        }
+        
+        .btn.purple {
+            background: var(--purple);
+            color: white;
+        }
+        
+        .btn.purple:hover {
+            background: #8e44ad;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin: 60px 0;
+        }
+        
+        .testimonial-card {
+            background: rgba(22, 33, 62, 0.8);
+            border-left: 3px solid var(--gold);
+            padding: 25px;
+            width: 280px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-card strong {
+            color: var(--gold);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--blue);
+            padding: 30px;
+            text-align: center;
+            margin-top: 60px;
+            backdrop-filter: blur(2px);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                position: static;
+                display: block;
+                margin: 0 auto 20px;
+            }
+            
+            .pricing-card {
+                width: 90%;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <!-- Replace with your actual logo -->
+        <img src="https://i.ibb.co/fGq1cGT/your-logo.png" alt="Forex Mastery Academy Logo" class="logo">
+        
+        <div class="container">
+            <h1>FOREX MASTERY ACADEMY</h1>
+            <p>Professional Trading Signals & Personalized Mentorship</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Main Navigation Tabs -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab('signals')">Forex Signals</button>
+            <button class="tab-btn" onclick="openTab('mentorship')">Mentorship</button>
+            <button class="tab-btn" onclick="openTab('community')">Community</button>
+        </div>
+        
+        <!-- SIGNALS TAB -->
+        <div id="signals" class="tab-content active">
+            <h2 style="text-align: center; margin-bottom: 30px;">VIP FOREX SIGNALS PLANS</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 40px;">Receive daily high-probability trading signals with precise entry/exit points, risk management guidance, and WhatsApp support.</p>
+            
+            <div class="pricing-container">
+                <!-- 1 MONTH PLAN -->
+                <div class="pricing-card">
+                    <h3 class="plan-name">1 Month</h3>
+                    <div class="price">50,000 UGX</div>
+                    <ul class="features">
+                        <li>3-5 signals per day (Mon-Fri)</li>
+                        <li>Basic WhatsApp support</li>
+                        <li>Entry/Exit/Target levels</li>
+                        <li>Daily market updates</li>
+                    </ul>
+                    <a href="https://store.pesapal.com/shop/0ovdyr-forexmasteryacademyfma?productCode=756696c6-9d40-4192-a17b-5f0d48aa9044" class="btn" target="_blank" rel="noopener">SUBSCRIBE NOW</a>
+                </div>
+                
+                <!-- 3 MONTHS PLAN -->
+                <div class="pricing-card">
+                    <div class="badge green">BEST VALUE</div>
+                    <h3 class="plan-name">3 Months</h3>
+                    <div class="price">110,000 UGX</div>
+                    <div class="installment">Save 27% vs monthly</div>
+                    <ul class="features">
+                        <li>All 1-month features</li>
+                        <li>Priority support</li>
+                        <li>Weekly market analysis</li>
+                        <li>Risk management guide</li>
+                        <li>Exclusive webinar access</li>
+                    </ul>
+                    <a href="https://store.pesapal.com/shop/0ovdyr-forexmasteryacademyfma?productCode=908eaf63-cae6-480e-9d78-8574439b4a6c" class="btn" target="_blank" rel="noopener">SUBSCRIBE NOW</a>
+                </div>
+                
+                <!-- LIFETIME PLAN -->
+                <div class="pricing-card" style="border-color: var(--purple);">
+                    <div class="badge gold">LIMITED OFFER</div>
+                    <h3 class="plan-name" style="color: var(--purple);">Lifetime</h3>
+                    <div class="price">1,000,000 UGX</div>
+                    <div class="installment">One-time payment</div>
+                    <ul class="features">
+                        <li>Unlimited signal access</li>
+                        <li>24/7 VIP support</li>
+                        <li>Personal trading coach</li>
+                        <li>Advanced strategies</li>
+                        <li>All future updates included</li>
+                    </ul>
+                    <a href="https://store.pesapal.com/shop/0ovdyr-forexmasteryacademyfma?productCode=abe551d1-da06-4c5b-9c64-380497c86cfb" class="btn purple" target="_blank" rel="noopener">GET LIFETIME ACCESS</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- MENTORSHIP TAB -->
+        <div id="mentorship" class="tab-content">
+            <h2 style="text-align: center; margin-bottom: 30px;">1-ON-1 MENTORSHIP PROGRAMS</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 40px;">Transform from beginner to confident trader with our personalized coaching programs tailored to your skill level.</p>
+            
+            <div class="pricing-container">
+                <!-- BEGINNER PLAN -->
+                <div class="pricing-card">
+                    <h3 class="plan-name">Beginner Foundation</h3>
+                    <div class="price">750,000 UGX</div>
+                    <div class="installment">or 4 installments of 200,000 UGX</div>
+                    <ul class="features">
+                        <li><span class="highlight">3 months</span> comprehensive training</li>
+                        <li>12 <span class="highlight">private 1-on-1 sessions</span></li>
+                        <li>Market fundamentals mastery</li>
+                        <li>Technical analysis from scratch</li>
+                        <li>Psychological training modules</li>
+                        <li>24/7 WhatsApp support</li>
+                    </ul>
+                    <a href="https://store.pesapal.com/shop/0ovdyr-forexmasteryacademyfma?productCode=0e2d2e42-7c27-4e2a-b123-58089b740d33" class="btn" target="_blank" rel="noopener">ENROLL NOW</a>
+                </div>
+                
+                <!-- INTERMEDIATE PLAN -->
+                <div class="pricing-card">
+                    <div class="badge green">MOST POPULAR</div>
+                    <h3 class="plan-name">Intermediate Accelerator</h3>
+                    <div class="price">450,000 UGX</div>
+                    <div class="installment">or 3 installments of 160,000 UGX</div>
+                    <ul class="features">
+                        <li><span class="highlight">1.5 months</span> intensive training</li>
+                        <li>6 <span class="highlight">private 1-on-1 sessions</span></li>
+                        <li>Advanced chart pattern mastery</li>
+                        <li>Risk management framework</li>
+                        <li><span class="highlight">Live trading</span> demonstrations</li>
+                    </ul>
+                    <a href="https://store.pesapal.com/shop/0ovdyr-forexmasteryacademyfma?productCode=e443cff0-71bc-427a-b32a-f187740e15e7" class="btn" target="_blank" rel="noopener">ENROLL NOW</a>
+                </div>
+                
+                <!-- LIFETIME PLAN -->
+                <div class="pricing-card" style="border-color: var(--purple);">
+                    <div class="badge gold">BEST VALUE</div>
+                    <h3 class="plan-name" style="color: var(--purple);">Lifetime Mastery</h3>
+                    <div class="price">1,200,000 UGX</div>
+                    <div class="installment">or 6 installments of 220,000 UGX</div>
+                    <ul class="features">
+                        <li><span class="highlight">Lifetime access</span> to all materials</li>
+                        <li><span class="highlight">Unlimited 1-on-1 sessions</span> (monthly)</li>
+                        <li>All beginner + intermediate content</li>
+                        <li>Advanced algorithmic trading</li>
+                        <li>Portfolio management strategies</li>
+                    </ul>
+                    <a href="https://store.pesapal.com/shop/0ovdyr-forexmasteryacademyfma?productCode=49699d8f-9cab-4049-9572-c26ea0644113" class="btn purple" target="_blank" rel="noopener">ENROLL NOW</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- COMMUNITY TAB -->
+        <div id="community" class="tab-content">
+            <h2 style="text-align: center; margin-bottom: 30px;">COMMUNITY TRADING PROGRAM</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 40px;">Join our vibrant trading community for group learning, live sessions, and collaborative growth.</p>
+            
+            <div class="pricing-container">
+                <!-- BEGINNER COMMUNITY -->
+                <div class="pricing-card">
+                    <h3 class="plan-name">Beginner Community</h3>
+                    <div class="price">500,000 UGX</div>
+                    <div class="installment">or 3 installments of 180,000 UGX</div>
+                    <ul class="features">
+                        <li><span class="highlight">3 months</span> structured learning</li>
+                        <li>Bi-weekly <span class="highlight">live workshops</span></li>
+                        <li>Beginner-friendly content library</li>
+                        <li>Daily market updates</li>
+                        <li>Private Telegram group access</li>
+                    </ul>
+                    <a href="https://store.pesapal.com/shop/0ovdyr-forexmasteryacademyfma?productCode=d8b032f7-59db-4c8a-8b77-18408602f9b5" class="btn" target="_blank" rel="noopener">JOIN COMMUNITY</a>
+                </div>
+                
+                <!-- INTERMEDIATE COMMUNITY -->
+                <div class="pricing-card">
+                    <div class="badge">POPULAR</div>
+                    <h3 class="plan-name">Pro Community</h3>
+                    <div class="price">300,000 UGX</div>
+                    <div class="installment">or 2 installments of 160,000 UGX</div>
+                    <ul class="features">
+                        <li><span class="highlight">1.5 months</span> group training</li>
+                        <li>Weekly <span class="highlight">live Q&A sessions</span></li>
+                        <li>Advanced strategy discussions</li>
+                        <li>Weekly market analysis reports</li>
+                        <li>Collaborative trade ideas</li>
+                    </ul>
+                    <a href="https://store.pesapal.com/shop/0ovdyr-forexmasteryacademyfma?productCode=dce779d5-5c33-4024-b6a0-d3fe5e995004" class="btn" target="_blank" rel="noopener">JOIN COMMUNITY</a>
+                </div>
+                
+                <!-- LIFETIME COMMUNITY -->
+                <div class="pricing-card" style="border-color: var(--purple);">
+                    <h3 class="plan-name" style="color: var(--purple);">Lifetime Community</h3>
+                    <div class="price">800,000 UGX</div>
+                    <div class="installment">or 5 installments of 170,000 UGX</div>
+                    <ul class="features">
+                        <li><span class="highlight">Lifetime access</span> to community</li>
+                        <li>All current and future courses</li>
+                        <li>Monthly <span class="highlight">mastermind sessions</span></li>
+                        <li>Exclusive trading tools</li>
+                        <li>Private Discord server access</li>
+                    </ul>
+                    <a href="https://store.pesapal.com/shop/0ovdyr-forexmasteryacademyfma?productCode=dbf691b5-3e86-4950-9f16-e56fb455f287" class="btn purple" target="_blank" rel="noopener">JOIN COMMUNITY</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- TESTIMONIALS SECTION -->
+        <h2 style="text-align: center; margin-top: 60px;">WHAT OUR MEMBERS SAY</h2>
+        <div class="testimonials">
+            <div class="testimonial-card">
+                <p>"The signals service helped me grow my account by 120% in just 2 months. The accuracy is incredible!"</p>
+                <strong>— Robert, Kampala</strong>
+            </div>
+            <div class="testimonial-card">
+                <p>"My mentor transformed my trading completely. I went from losing money to consistent profits in 3 months."</p>
+                <strong>— Sarah, Entebbe</strong>
+            </div>
+            <div class="testimonial-card">
+                <p>"The community support is invaluable. I've learned more here than in years of studying on my own."</p>
+                <strong>— David, Jinja</strong>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Contact: +256 702 523 892 | WhatsApp available 24/7</p>
+            <p>Email: info@forexmasteryug.com</p>
+            <p>© 2023 Forex Mastery Academy Uganda. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function openTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.getElementsByClassName('tab-content');
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove('active');
+            }
+            
+            // Remove active class from all tab buttons
+            const tabButtons = document.getElementsByClassName('tab-btn');
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove('active');
+            }
+            
+            // Show current tab and mark button as active
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
